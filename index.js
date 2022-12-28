@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { dbConnect } = require("./database/database");
 
 const app = express();
 app.use(cors());
@@ -10,6 +11,7 @@ require("dotenv").config();
 const port = process.env.PORT || 5000;
 
 //database setup
+dbConnect();
 
 //route setup
 app.get("/", (req, res) => {
