@@ -17,8 +17,10 @@ async function dbConnect() {
 
 // create collections
 const taskCollection = clint.db("dailyTask").collection("tasks");
+const commentCollection = clint.db("dailyTask").collection("comments");
 
 module.exports = {
   dbConnect,
   taskCollection,
+  commentCollection,
 };
