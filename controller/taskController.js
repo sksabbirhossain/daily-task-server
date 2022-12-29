@@ -63,6 +63,32 @@ const updateTask = async (req, res) => {
     });
   }
 };
+//update complete task by id
+const completeTask = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const task = await taskCollection.updateOne(
+      { _id: ObjectId(id) },
+      { $set: { status: true } }
+    );
+    if (task.matchedCount) {
+      res.send({
+        success: true,
+        message: "task completed",
+      });
+    } else {
+      res.send({
+        success: false,
+        message: "something went worng!",
+      });
+    }
+  } catch {
+    res.send({
+      success: false,
+      message: "something went worng!",
+    });
+  }
+};
 
 //add task
 const addtask = async (req, res) => {
@@ -88,12 +114,12 @@ const deleteTask = async (req, res) => {
     if (result.deletedCount) {
       res.send({
         success: true,
-        message: "User Delete successfull",
+        message: "Task Delete successfull",
       });
     } else {
       res.send({
         success: false,
-        message: "user not deleted",
+        message: "Task not deleted",
       });
     }
   } catch (error) {
@@ -110,4 +136,5 @@ module.exports = {
   deleteTask,
   getUpdateTask,
   updateTask,
+  completeTask,
 };

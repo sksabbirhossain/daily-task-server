@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const { dbConnect } = require("./database/database");
 const taskRouter = require("./routes/taskRouter");
+const completedTaskRouter = require("./routes/completedTaskRouter");
 
 const app = express();
 app.use(cors());
@@ -15,7 +16,8 @@ const port = process.env.PORT || 5000;
 dbConnect();
 
 //route setup
-app.use("/api", taskRouter)
+app.use("/api", taskRouter);
+app.use("/api", completedTaskRouter);
 
 //start server
 app.listen(port, () => {
