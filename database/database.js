@@ -1,6 +1,7 @@
 const { MongoClient } = require("mongodb");
 
-const url = `mongodb://localhost:27017`;
+// const url = `mongodb://localhost:27017`;
+const url = `mongodb+srv://admin:RAwSdZl9apdrNHif@cluster0.g6yzpsg.mongodb.net/?retryWrites=true&w=majority`;
 const clint = new MongoClient(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
